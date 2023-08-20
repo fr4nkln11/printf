@@ -14,7 +14,7 @@
 
 int _printf(const char *format, ...)
 {
-	int char_count, index;
+	int char_count;
 	va_list arg_ptr;
 
 	char_count = 0;
@@ -22,12 +22,23 @@ int _printf(const char *format, ...)
 	if (format != NULL)
 	{
 		va_start(arg_ptr, format);
-		index = 0;
 
-		while (*(format + index) != '\0')
+		while (*format != '\0')
 		{
-			char_count += write(1, (format + index), 1);
-			index++;
+			/* if the character pointed to is a % */
+			if (*format == '%')
+			{
+				/* then the character after it is a format specifier*/
+				char format_specifier;
+
+				format_specifier = *(++format);
+				char_count += print_format(format_specifier, arg_ptr);
+			}
+			else
+			{
+				char_count += write(1, format, 1);
+			}
+			format++;
 		}
 
 	}
