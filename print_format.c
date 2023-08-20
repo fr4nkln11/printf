@@ -39,7 +39,12 @@ int print_format(char specifier, va_list arg_ptr)
 			char_count += print_string(va_arg(arg_ptr, char *));
 			break;
 
+		case '%':
+			char_count += write(1, "%", 1);
+			break;
+
 		default:
+			char_count += write(1, "%", 1);
 			char_count += write(1, &specifier, 1);
 			break;
 	}
