@@ -18,11 +18,10 @@ int _printf(const char *format, ...)
 	va_list arg_ptr;
 
 	char_count = 0;
+	va_start(arg_ptr, format);
 
 	if (format != NULL)
 	{
-		va_start(arg_ptr, format);
-
 		while (*format != '\0')
 		{
 			/* if the character pointed to is a % */
@@ -40,7 +39,8 @@ int _printf(const char *format, ...)
 			}
 			format++;
 		}
-
 	}
+
+	va_end(arg_ptr);
 	return (char_count);
 }
