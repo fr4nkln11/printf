@@ -3,10 +3,24 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+/**
+ * print_char - print a character
+ * @character: character to be printed
+ *
+ * Return: 1
+ */
+
 int print_char(char character)
 {
 	return (write(1, &character, 1));
 }
+
+/**
+ * print_string - print a string of characters
+ * @string: pointer to string
+ *
+ * Return: number of characters printed
+ */
 
 int print_string(char *string)
 {
@@ -14,14 +28,29 @@ int print_string(char *string)
 
 	char_count = 0;
 
-	while (*string != '\0')
+	if (string != NULL)
 	{
-		char_count += print_char(*string);
-		string++;
+		while (*string != '\0')
+		{
+			char_count += print_char(*string);
+			string++;
+		}
+	}
+	else
+	{
+		char_count += print_string("(null)");
 	}
 
 	return (char_count);
 }
+
+/**
+ * print_format - select the correct specifier and print
+ * @specifier: the format specifier to check
+ * @arg_ptr: argument pointer
+ *
+ * Return: the number of characters printed
+ */
 
 int print_format(char specifier, va_list arg_ptr)
 {
