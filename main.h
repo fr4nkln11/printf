@@ -7,6 +7,7 @@
 
 int _printf(const char *format, ...);
 
+int scan_format(const char *format, va_list arg_ptr);
 int print_format(char specifier, va_list arg_ptr);
 
 int print_char(char character);

@@ -3,7 +3,7 @@
 /**
  * print_format - select the correct specifier and print
  * @specifier: the format specifier to check
- * @arg_ptr: argument pointer
+ * @arg_ptr: pointer to argument list
  *
  * Return: the number of characters printed
  */
@@ -33,6 +33,43 @@ int print_format(char specifier, va_list arg_ptr)
 			char_count += write(1, &specifier, 1);
 			break;
 	}
+
+	return (char_count);
+}
+
+/**
+ * scan_format - this function scans through the format string,
+ * checks for format specifiers and prints regular characters
+ * @format: format string
+ * @arg_ptr: pointer to argument list
+ *
+ * Return: the number of characters printed
+ */
+
+int scan_format(const char *format, va_list arg_ptr)
+{
+	int char_count;
+
+		while (*format != '\0')
+		{
+			/* if the character pointed to is a % */
+			if (*format == '%')
+			{
+				if (*(format + 1) == '\0')
+				{
+					return (-1);
+				}
+				else
+				{
+					char_count += print_format(*(++format), arg_ptr);
+				}
+			}
+			else
+			{
+				char_count += write(1, format, 1);
+			}
+			format++;
+		}
 
 	return (char_count);
 }

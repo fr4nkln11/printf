@@ -30,19 +30,7 @@ int _printf(const char *format, ...)
 	if (format != NULL)
 	{
 		va_start(arg_ptr, format);
-		while (*format != '\0')
-		{
-			/* if the character pointed to is a % */
-			if (*format == '%')
-			{
-				char_count += print_format(*(++format), arg_ptr);
-			}
-			else
-			{
-				char_count += write(1, format, 1);
-			}
-			format++;
-		}
+		char_count = scan_format(format, arg_ptr);
 		va_end(arg_ptr);
 	}
 	else

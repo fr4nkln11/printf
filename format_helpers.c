@@ -9,14 +9,7 @@
 
 int print_char(char character)
 {
-	if (character != '\0')
-	{
-		return (write(1, &character, 1));
-	}
-	else
-	{
-		return (0);
-	}
+	return (write(1, &character, 1));
 }
 
 /**
