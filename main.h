@@ -11,5 +11,6 @@ int print_format(char specifier, va_list arg_ptr);
 
 int print_char(char character);
 int print_string(char *string);
+int print_decimal_integer(int integer);
 
 #endif
