@@ -1,6 +1,3 @@
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdarg.h>
 #include "main.h"
 
 /**
@@ -21,7 +18,7 @@ int _printf(const char *format, ...)
 
 	if (format[0] == '\0')
 	{
-		return (-1);
+		return (0);
 	}
 
 	if ((format[0] == '%' && format[1] == '\0')
