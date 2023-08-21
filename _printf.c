@@ -30,7 +30,7 @@ int _printf(const char *format, ...)
 	if (format != NULL)
 	{
 		va_start(arg_ptr, format);
-		char_count = scan_format(format, arg_ptr);
+		char_count += scan_format(format, arg_ptr);
 		va_end(arg_ptr);
 	}
 	else

@@ -50,6 +50,8 @@ int scan_format(const char *format, va_list arg_ptr)
 {
 	int char_count;
 
+	char_count = 0;
+
 		while (*format != '\0')
 		{
 			/* if the character pointed to is a % */
