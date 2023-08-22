@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdarg.h>
 
 /**
  * print_format - select the correct specifier and print
@@ -34,6 +35,10 @@ int print_format(char specifier, va_list arg_ptr)
 
 		case 'i':
 			char_count += print_base_digit(va_arg(arg_ptr, int), 10);
+			break;
+
+		case 'b':
+			char_count += print_base_digit(va_arg(arg_ptr, int), 2);
 			break;
 
 		default:
