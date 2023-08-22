@@ -13,5 +13,6 @@ int print_format(char specifier, va_list arg_ptr);
 int print_char(char character);
 int print_string(char *string);
 int print_base_digit(long number, int base);
+int print_hex_digit(long number, int isUpper);
 
 #endif

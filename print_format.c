@@ -30,9 +30,6 @@ int print_format(char specifier, va_list arg_ptr)
 			break;
 
 		case 'd':
-			char_count += print_base_digit(va_arg(arg_ptr, int), 10);
-			break;
-
 		case 'i':
 			char_count += print_base_digit(va_arg(arg_ptr, int), 10);
 			break;
