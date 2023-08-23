@@ -1,6 +1,3 @@
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdarg.h>
 #include "main.h"
 
 /**
@@ -18,29 +15,28 @@ int _printf(const char *format, ...)
 	va_list arg_ptr;
 
 	char_count = 0;
-	va_start(arg_ptr, format);
 
 	if (format != NULL)
 	{
-		while (*format != '\0')
-		{
-			/* if the character pointed to is a % */
-			if (*format == '%')
-			{
-				/* then the character after it is a format specifier*/
-				char format_specifier;
 
-				format_specifier = *(++format);
-				char_count += print_format(format_specifier, arg_ptr);
-			}
-			else
-			{
-				char_count += write(1, format, 1);
-			}
-			format++;
+		if (format[0] == '\0')
+		{
+			return (0);
 		}
+
+		if ((format[0] == '%' && format[1] == '\0')
+				|| (format[0] == '%' && format[1] == ' ' && format[2] == '\0'))
+		{
+			return (-1);
+		}
+		va_start(arg_ptr, format);
+		char_count += scan_format(format, arg_ptr);
+		va_end(arg_ptr);
+	}
+	else
+	{
+		return (-1);
 	}
 
-	va_end(arg_ptr);
 	return (char_count);
 }
