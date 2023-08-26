@@ -15,6 +15,13 @@ int spec_c(va_list arg_ptr)
 	return (print_char(character));
 }
 
+/**
+ * spec_s - function for c specifier
+ * @arg_ptr: pointer to argument list
+ *
+ * Return: number of bytes printed
+ */
+
 int spec_s(va_list arg_ptr)
 {
 	char *string = va_arg(arg_ptr, char *);
@@ -22,10 +29,12 @@ int spec_s(va_list arg_ptr)
 	return (print_string(string));
 }
 
-int spec_percent()
-{
-	return (print_char('%'));
-}
+/**
+ * spec_di - function for c specifier
+ * @arg_ptr: pointer to argument list
+ *
+ * Return: number of bytes printed
+ */
 
 int spec_di(va_list arg_ptr)
 {
@@ -33,6 +42,13 @@ int spec_di(va_list arg_ptr)
 
 	return (print_base_digit(number, 10));
 }
+
+/**
+ * spec_b - function for c specifier
+ * @arg_ptr: pointer to argument list
+ *
+ * Return: number of bytes printed
+ */
 
 int spec_b(va_list arg_ptr)
 {
