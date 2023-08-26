@@ -58,10 +58,6 @@ int print_base_digit(long number, int base)
 
 	if (number < 0)
 	{
-		if (base == 2)
-		{
-			return (-1);
-		}
 		return (write(1, "-", 1) + print_base_digit(-number, base));
 	}
 	else if (number < base)
