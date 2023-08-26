@@ -31,19 +31,17 @@ int print_format(char specifier, va_list arg_ptr)
 			char_count += specs[spec_index].specifier_function(arg_ptr);
 			break;
 		}
-		else if (specifier == '%')
-		{
-			char_count += print_char('%');
-			break;
-		}
-		else
-		{
-			char_count += print_char('%');
-			char_count += print_char(specifier);
-			break;
-		}
-
 		spec_index++;
+	}
+
+	if (specifier == '%')
+	{
+		char_count += print_char('%');
+	}
+	else if (char_count == 0)
+	{
+		char_count += print_char('%');
+		char_count += print_char(specifier);
 	}
 
 	return (char_count);
